@@ -3,7 +3,7 @@ import curses
 
 def snake_game(win):
     curses.curs_set(0)
-    win.timeout(100)  # Game speed (in milliseconds)
+    win.timeout(100)  # Game speed
 
     up = 0
     left = 1
@@ -15,7 +15,7 @@ def snake_game(win):
     snake = [[4, 10], [4, 9], [4, 8]]
     food = [10, 20]
 
-    # Set up the game board with borders
+    #Duvar Yapımı(Creation The Borders)
     height, width = win.getmaxyx()
     game_border = [
         [0, 0],
@@ -54,7 +54,7 @@ def snake_game(win):
         elif snake_direction == right:
             new_head[1] += 1
 
-        # Check if the snake hit the wall
+        #Sınır Temas Kontrol (Check if snake hits the wall)
         if new_head in game_border or new_head in snake:
             break
 
@@ -76,7 +76,7 @@ def snake_game(win):
 
         win.addch(int(snake[0][0]), int(snake[0][1]), curses.ACS_CKBOARD)
 
-        # Show score
+        #Score
         win.addstr(0, 0, f"Score: {score}")
 
     win.clear()
