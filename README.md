@@ -32,14 +32,11 @@ pytest test_project.py
 ## Dependencies
 The project relies on the following Python libraries:
 
-curses: Used for creating a terminal-based user interface.
+curses: Used for creating a terminal-based user interface.  
 random: Utilized for generating random positions for the food.
 
-## Contributing
-Feel free to contribute to the project by submitting issues or pull requests.
 
 ## License
-This project is licensed under the MIT License.
+This project is licensed under the [MIT](https://choosealicense.com/licenses/mit/) License.
 
-```bash
-python project.py
+
