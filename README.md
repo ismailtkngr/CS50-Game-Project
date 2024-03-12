@@ -23,8 +23,6 @@ The project consists of the following files:
 
 To play the game, run the `project.py` script. Use the arrow keys to control the snake's direction. Press 'q' to quit the game.
 
-```bash
-python project.py
 
 ## Testing
 The project includes a testing suite using the pytest framework. To run the tests, use the following command:
@@ -44,3 +42,6 @@ Feel free to contribute to the project by submitting issues or pull requests.
 
 ## License
 This project is licensed under the MIT License.
+
+```bash
+python project.py
