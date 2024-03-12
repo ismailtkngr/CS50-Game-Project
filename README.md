@@ -27,9 +27,7 @@ To play the game, run the `project.py` script. Use the arrow keys to control the
 ## Testing
 The project includes a testing suite using the pytest framework. To run the tests, use the following command:
 
-bash
-Copy code
-pytest tests/
+pytest test_project.py
 
 ## Dependencies
 The project relies on the following Python libraries:
