@@ -7,7 +7,7 @@ def main():
 
 def snake_game(win):
     curses.curs_set(0)
-    win.timeout(100)  # Game speed (in milliseconds)
+    win.timeout(100)  # Game speed
 
     up = 0
     left = 1
@@ -19,6 +19,16 @@ def snake_game(win):
     snake = [[4, 10], [4, 9], [4, 8]]
     food = [10, 20]
 
+    #Duvar Yapımı(Creation The Borders)
+    height, width = win.getmaxyx()
+    game_border = [
+        [0, 0],
+        [0, width-1],
+        [height-1, 0],
+        [height-1, width-1]
+    ]
+
+    win.border()
     win.addch(int(food[0]), int(food[1]), curses.ACS_PI)
 
     score = 0
@@ -48,24 +58,20 @@ def snake_game(win):
         elif snake_direction == right:
             new_head[1] += 1
 
+        #Sınır Temas Kontrol (Check if snake hits the wall)
+        if new_head in game_border or new_head in snake:
+            break
+
         snake.insert(0, new_head)
-
-        if (
-            snake[0][0] == 0
-            or snake[0][0] == 23
-            or snake[0][1] == 0
-            or snake[0][1] == 79
-        ):
-            break
-
-        if snake[0] in snake[1:]:
-            break
 
         if snake[0] == food:
             score += 1
             food = None
             while food is None:
-                new_food = [random.randint(1, 22), random.randint(1, 78)]
+                new_food = [
+                    random.randint(1, height-2),
+                    random.randint(1, width-2)
+                ]
                 food = new_food if new_food not in snake else None
             win.addch(food[0], food[1], curses.ACS_PI)
         else:
@@ -74,11 +80,8 @@ def snake_game(win):
 
         win.addch(int(snake[0][0]), int(snake[0][1]), curses.ACS_CKBOARD)
 
-        # Check snake size
-        if len(snake) > 3:
-            # Add a segment to the end of the snake
-            win.addch(int(tail[0]), int(tail[1]), curses.ACS_CKBOARD)
-            snake.append(tail)
+        #Score
+        win.addstr(0, 0, f"Score: {score}")
 
     win.clear()
     win.addstr(5, 10, f"Game Over - Score: {score}")
@@ -87,6 +90,8 @@ def snake_game(win):
     play_again_response = win.getch()
     if play_again_response in [ord('Y'), ord('y')]:
         snake_game(win)
+
+curses.wrapper(snake_game)
 
 
 if __name__ == "__main__":
