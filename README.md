@@ -26,21 +26,21 @@ To play the game, run the `project.py` script. Use the arrow keys to control the
 ```bash
 python project.py
 
-Testing
+## Testing
 The project includes a testing suite using the pytest framework. To run the tests, use the following command:
 
 bash
 Copy code
 pytest tests/
 
-Dependencies
+## Dependencies
 The project relies on the following Python libraries:
 
 curses: Used for creating a terminal-based user interface.
 random: Utilized for generating random positions for the food.
 
-Contributing
+## Contributing
 Feel free to contribute to the project by submitting issues or pull requests.
 
-License
+## License
 This project is licensed under the MIT License.
